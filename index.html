@@ -1,113 +1,160 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>متجر الطرشونة</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر الاحتراف | Professional Store</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #e02020; /* أحمر رياضي جذاب */
+            --bg-color: #0f172a;    /* خلفية داكنة فخمة */
+            --card-bg: #1e293b;     /* لون البطاقات */
+            --text-color: #f8fafc;
+        }
 
-<style>
-body {
-  font-family: Arial;
-  margin: 0;
-  background: #f5f5f5;
-  text-align: center;
-}
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
 
-header {
-  background: #0a74da;
-  color: white;
-  padding: 20px;
-}
+        .store-container {
+            max-width: 500px;
+            width: 100%;
+        }
 
-.product {
-  background: white;
-  margin: 20px;
-  padding: 20px;
-  border-radius: 10px;
-}
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
 
-.product img {
-  width: 220px;
-  border-radius: 10px;
-}
+        .header h1 {
+            font-size: 24px;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-button {
-  padding: 12px 25px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  margin: 5px;
-}
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s ease;
+        }
 
-.whatsapp {
-  background: #25D366;
-  color: white;
-}
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
 
-.instagram {
-  background: #E1306C;
-  color: white;
-}
+        .product-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--primary-color);
+        }
 
-</style>
+        .product-info {
+            padding: 20px;
+            text-align: center;
+        }
 
+        .product-name {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .price-tag {
+            font-size: 28px;
+            color: #10b981; /* لون أخضر للثمن */
+            font-weight: 700;
+            margin: 15px 0;
+        }
+
+        .buy-button {
+            display: block;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: bold;
+            font-size: 18px;
+            transition: background 0.3s;
+            margin-top: 20px;
+        }
+
+        .buy-button:hover {
+            background-color: #b91c1c;
+        }
+
+        .footer-links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .social-icon {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 14px;
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-<h1 id="storeName"></h1>
-<p>أفضل جودة للتنظيف</p>
-</header>
+<div class="store-container">
+    <div class="header">
+        <h1 id="storeName">اسم المتجر</h1>
+    </div>
 
-<div class="product">
-<img id="productImage" src="">
-<h2 id="productName"></h2>
+    <div class="product-card">
+        <img id="productImage" src="https://via.placeholder.com/400x400" alt="منتج" class="product-image">
+        <div class="product-info">
+            <div class="product-name" id="productName">اسم المنتج هنا</div>
+            <div class="price-tag" id="priceLabel">00.00 د.ج</div>
+            
+            <a href="#" id="whatsappBtn" class="buy-button">طلب عبر واتساب الآن</a>
+        </div>
+    </div>
 
-<p>✔ امتصاص قوي</p>
-<p>✔ لا تترك آثار</p>
-<p>✔ تدوم طويلاً</p>
-
-<h3 id="productPrice"></h3>
-
-<!-- أزرار الطلب -->
-<button class="whatsapp" onclick="orderWhatsApp()">اطلب عبر واتساب</button>
-<br>
-<button class="instagram" onclick="openInstagram()">زيارة إنستغرام</button>
-
+    <div class="footer-links">
+        <a href="#" id="instagramLink" class="social-icon">انستغرام</a>
+        <a href="#" class="social-icon">سياسة الاستبدال</a>
+    </div>
 </div>
 
 <script>
+    // --- قم بتعديل بياناتك هنا فقط ---
+    const DATA = {
+        storeName: "متجر الفخامة للسيارات",
+        productName: "أضواء LED H1 توربينية 100W",
+        price: "7500 د.ج",
+        image: "رابط_صورة_المنتج_هنا", 
+        phone: "213XXXXXXXXX", // رقمك مع كود الدولة وبدون +
+        instagram: "https://instagram.com/your_page"
+    };
+    // --------------------------------
 
-// 🔥 عدل هنا فقط 👇
-const DATA = {
-  storeName: "متجر الطرشونة",
-  productName: "طرشونة احترافية",
-  price: "500 دج",
-  image: "ضع_رابط_الصورة_هنا",
-  phone: "213XXXXXXXXX", // رقمك بدون +
-  instagram: "https://instagram.com/yourpage"
-};
-
-// لا تغير هذا 👇
-document.getElementById("storeName").innerText = DATA.storeName;
-document.getElementById("productName").innerText = DATA.productName;
-document.getElementById("productPrice").innerText = "السعر: " + DATA.price;
-document.getElementById("productImage").src = DATA.image;
-
-// زر واتساب
-function orderWhatsApp() {
-  let message = `مرحبا، أريد طلب ${DATA.productName} بسعر ${DATA.price}`;
-  let url = `https://wa.me/${DATA.phone}?text=${encodeURIComponent(message)}`;
-  window.open(url, '_blank');
-}
-
-// زر إنستغرام
-function openInstagram() {
-  window.open(DATA.instagram, '_blank');
-}
-
+    // تحديث الصفحة بالبيانات تلقائياً
+    document.getElementById('storeName').innerText = DATA.storeName;
+    document.getElementById('productName').innerText = DATA.productName;
+    document.getElementById('priceLabel').innerText = DATA.price;
+    document.getElementById('productImage').src = DATA.image;
+    document.getElementById('instagramLink').href = DATA.instagram;
+    
+    // تجهيز رابط الواتساب برسالة احترافية
+    const message = `مرحباً ${DATA.storeName}، أريد طلب منتج: ${DATA.productName} بسعر ${DATA.price}`;
+    document.getElementById('whatsappBtn').href = `https://wa.me/${DATA.phone}?text=${encodeURIComponent(message)}`;
 </script>
 
 </body>
